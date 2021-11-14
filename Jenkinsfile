@@ -14,7 +14,7 @@ pipeline {
         stage('Test') {
             when {
                 expression {
-			return params.TestChoice =='YES' && params.TestBool =='TRUE'
+			return params.TestChoice =='YES' && params.TestBool =='true'
                 }
             }
 		steps {
@@ -24,6 +24,11 @@ pipeline {
                 '''
             }
         }
+	stage('Environment') {
+		steps {
+			echo " The environment is ${params.Env}"
+		}
+	}
         stage('Coverage'){
             steps {
                 sh '''
