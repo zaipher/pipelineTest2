@@ -12,7 +12,13 @@ pipeline {
             }
         }
         stage('Test') {
-            steps {
+            when {
+                expression {
+			return params.require.TestChoice =='YES';
+			return params.require.TestBool =='TRUE';
+                }
+            }
+		steps {
                 sh '''
                   grep This app.sh >> ${BUILD_ID}.cov
                   grep That app.sh >> ${BUILD_ID}.cov
@@ -26,6 +32,7 @@ pipeline {
                   cov_lines=`cat ${BUILD_ID}.cov | wc -l`
                   echo The app has `expr $app_lines - $cov_lines` lines uncovered > ${BUILD_ID}.rpt
                   cat ${BUILD_ID}.rpt
+			cd ${SOURCE_DIR}; ls -a
                 '''
                 archiveArtifacts "${env.BUILD_ID}.rpt"
             }
