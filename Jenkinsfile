@@ -1,13 +1,14 @@
 pipeline {
     agent {
 	label 'ssh-agent'
+
 	}
     stages {
         stage('Build') {
             steps {
                 sh '''
                   echo This > app.sh
-                  echo That >> app.sh
+                  echo That is another line >> app.sh
                 '''
             }
         }
