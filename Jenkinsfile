@@ -1,6 +1,6 @@
 pipeline {
     agent {
-	label 'container-worker'
+	label 'params.Agent'
 	}
     stages {
         stage('Build') {
@@ -14,7 +14,7 @@ pipeline {
         stage('Test') {
             when {
                 expression {
-			return params.TestChoice =='YES' //&& params.TestBool =='true'
+			return params.TestChoice =='YES' && params.TestBool =='true'
                 }
             }
 		steps {
