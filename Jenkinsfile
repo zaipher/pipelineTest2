@@ -14,7 +14,7 @@ pipeline {
         stage('Test') {
             when {
                 expression {
-			return params.TestChoice =='YES' //&& params.TestBool =='true'
+			return params.TestChoice =='YES' && params.TestBool =='true'
                 }
             }
 		steps {
