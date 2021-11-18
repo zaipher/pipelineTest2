@@ -1,6 +1,6 @@
 pipeline {
     agent {
-	label 'params.Agent'
+	label 'ssh-agent'
 	}
     stages {
         stage('Build') {
