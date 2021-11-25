@@ -42,7 +42,6 @@ pipeline {
             }
         }
 	stage('speak') {
-        	slackSend color: '#BADA55', message: 'Hello, World!', channel: ishiwata-jenkins
-    }
+    slackSend channel: "#ishiwata-jenkins", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"}
     }
 }
