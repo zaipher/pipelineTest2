@@ -41,7 +41,7 @@ pipeline {
                 archiveArtifacts "${env.BUILD_ID}.rpt"
             }
         }
-	stage("speak") {
+	stage('speak') {
         	slackSend color: '#BADA55', message: 'Hello, World!', channel: ishiwata-jenkins
     }
     }
