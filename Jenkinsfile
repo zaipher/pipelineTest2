@@ -42,6 +42,7 @@ pipeline {
             }
         }
 	stage('speak') {
-    slackSend channel: "#ishiwata-jenkins", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"}
+		steps{
+    slackSend channel: "#ishiwata-jenkins", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"}}
     }
 }
