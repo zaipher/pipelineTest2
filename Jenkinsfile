@@ -43,6 +43,10 @@ pipeline {
         }
 	stage('speak') {
 		steps{
+            script{
+currentBuild.displayName = Build_Display
+currentBuild.description = Build_description
+}
     slackSend channel: "#ishiwata-jenkins", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"}}
     }
 }
